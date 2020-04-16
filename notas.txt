@@ -1,0 +1,38 @@
+Node
+    Instale a última versão do Node JS com o gerenciador de versões do Node - NVM
+    https://nodejs.org/en/download/package-manager/#nvm
+Yarn
+    Gerenciador de pacotes para instalações como o apt do Linux
+    https://classic.yarnpkg.com/pt-BR/docs/install/#debian-stable
+    Inicie o Yarn para criar o arquivo package.json
+        yarn init
+    Instale as dependências
+    yarn add <dependencia>
+Babel
+    Converter o código para que o navegador entenda
+    Para trabalhar com linha de comando
+        yarn add @babel/cli
+    Instale PRESET
+        yarn add @babel/preset-env
+    Instale CORE
+        yarn add @babel/core
+    Em package.json, configure como serão executados os scripts abaixo de dependencies:
+        ...
+          "dependencies": {
+            "@babel/cli": "^7.8.4",
+            "@babel/core": "^7.9.0",
+            "@babel/preset-env": "^7.9.5"
+          },
+          "scripts": {
+            "dev": "babel ./main.js -0 ./bundle.js -w"
+          }
+        }
+        O -w serve para atualizar automaticamente o bundle.js de acordo com o código do projeto
+    Execute o script dev para que o Babel transforme o código ES6 para o navegador como class em function
+        yarn dev
+    Crie o arquivo .babelrc na raiz do projeto para configurar o Babel com o conteúdo:
+        {
+            "presets": ["@babel/preset-env"]
+        }
+Webpack
+    Servidor ara o navegador atualizar automaticamente de acordo com o código
