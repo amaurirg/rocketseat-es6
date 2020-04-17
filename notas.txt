@@ -18,14 +18,14 @@ Babel
         yarn add @babel/core
     Em package.json, configure como serão executados os scripts abaixo de dependencies:
         ...
-          "dependencies": {
+        "dependencies": {
             "@babel/cli": "^7.8.4",
             "@babel/core": "^7.9.0",
             "@babel/preset-env": "^7.9.5"
-          },
-          "scripts": {
+        },
+        "scripts": {
             "dev": "babel ./main.js -0 ./bundle.js -w"
-          }
+        }
         }
         O -w serve para atualizar automaticamente o bundle.js de acordo com o código do projeto
     Execute o script dev para que o Babel transforme o código ES6 para o navegador como class em function
@@ -34,9 +34,14 @@ Babel
         {
             "presets": ["@babel/preset-env"]
         }
-Webpack
-    Servidor ara o navegador atualizar automaticamente de acordo com o código
-
+REST / SPREAD
+    Necessário instalar o pacote para funcionar com Babel
+    yarn add @babel/plugin-proposal-object-rest-spread
+    Dentro do arquivo .babelrc é necessário colocar os plugins abaixo dos presets
+        {
+            "presets": ["@babel/preset-env"],
+            "plugins": ["@babel/plugin-proposal-object-rest-spread"]
+        }
 
 STATIC
     Quando usado dentro de uma classe ele não enxergará o restante da classe (o que estiver fora desse método).
@@ -118,3 +123,18 @@ const find = arr.find(function(item) {
 console.log(find);
 
 
+
+// ARROW FUNCTIONS E VALORES PADRÃO PARA OS PARÂMETROS
+// Arquivo arrowFunctions.js
+
+// DESESTRUTURAÇÃO
+// Arquivo desestruturacao.js
+
+// REST
+// Arquivo rest.js
+
+
+
+
+Webpack
+        Servidor para o navegador atualizar automaticamente de acordo com o código
