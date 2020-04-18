@@ -1,10 +1,13 @@
 module.exports = {
     // arquivo principal
-    entry: './main.js',
+    entry: './src/main.js',
     // para onde será enviado o código convertido para antes do ES6 como bundle.js
     output: {
-        path: __dirname,
+        path: __dirname + '/public',
         filename: 'bundle.js',
+    },
+    devServer: {
+        contentBase: __dirname + '/public'
     },
     module: {
         // como deve se comportar quando usuário importar arquivos JS
