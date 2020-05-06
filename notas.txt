@@ -316,11 +316,15 @@ WEBPACK DEV SERVER
             }
 
 
+ASYNC / AWAIT
+    Instale as dependências para async/await:
+        yarn add @babel/plugin-transform-async-to-generator -D
+        yarn add @babel/polyfill -D
 
-
-
-
-
+AXIOS
+    Para requisições a APIs
+    Instale:
+        yarn add axios
 
 
 =================================================================================================

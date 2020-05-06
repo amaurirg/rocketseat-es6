@@ -1,6 +1,9 @@
 module.exports = {
-    // arquivo principal
-    entry: './src/main.js',
+    
+    entry: [
+        '@babel/polyfill',  // funcionalidades do Babel
+        './src/main.js' // arquivo principal
+    ],
     // para onde será enviado o código convertido para antes do ES6 como bundle.js
     output: {
         path: __dirname + '/public',
