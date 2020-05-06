@@ -86,14 +86,51 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./divide.js":
+/*!*******************!*\
+  !*** ./divide.js ***!
+  \*******************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return divide; });\nfunction divide(a, b) {\n  return a / b;\n}\n\n//# sourceURL=webpack:///./divide.js?");
+
+/***/ }),
+
+/***/ "./funcoes.js":
+/*!********************!*\
+  !*** ./funcoes.js ***!
+  \********************/
+/*! exports provided: soma, sub */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"soma\", function() { return soma; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"sub\", function() { return sub; });\nfunction soma(a, b) {\n  return a + b;\n}\nfunction sub(a, b) {\n  return a - b;\n}\n\n//# sourceURL=webpack:///./funcoes.js?");
+
+/***/ }),
+
 /***/ "./main.js":
 /*!*****************!*\
   !*** ./main.js ***!
   \*****************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("alert('OPA');\n\n//# sourceURL=webpack:///./main.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _funcoes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./funcoes */ \"./funcoes.js\");\n/* harmony import */ var _multiplica__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./multiplica */ \"./multiplica.js\");\n/* harmony import */ var _divide__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./divide */ \"./divide.js\");\n\n\n\nconsole.log(Object(_funcoes__WEBPACK_IMPORTED_MODULE_0__[\"soma\"])(1, 2));\nconsole.log(Object(_funcoes__WEBPACK_IMPORTED_MODULE_0__[\"sub\"])(4, 2));\nconsole.log(Object(_multiplica__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(4, 2));\nconsole.log(Object(_divide__WEBPACK_IMPORTED_MODULE_2__[\"default\"])(4, 2));\n\n//# sourceURL=webpack:///./main.js?");
+
+/***/ }),
+
+/***/ "./multiplica.js":
+/*!***********************!*\
+  !*** ./multiplica.js ***!
+  \***********************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return multiplica; });\nfunction multiplica(a, b) {\n  return a * b;\n}\n\n//# sourceURL=webpack:///./multiplica.js?");
 
 /***/ })
 

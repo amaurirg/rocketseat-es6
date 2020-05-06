@@ -134,7 +134,193 @@ console.log(find);
 // Arquivo rest.js
 
 
-
+=================================================================================================
 
 Webpack
-        Servidor para o navegador atualizar automaticamente de acordo com o código
+    Serviço que disponibiliza trabalhar com vários arquivos JS na aplicação, como de imagens, json, etc.
+    Converterá em um único arquivo bundle.js com todas as informações.
+    Configure as dependencies no arquivo package.json para devDependencies:
+        ...
+        "license": "MIT",
+        "devDependencies": {
+            "@babel/cli": "^7.8.4",
+        ...
+    Instale as dependências como desenvolvimento
+        yarn add webpack webpack-cli -D
+    Crie o arquivo webpack.config.js na raiz do projeto:
+        module.exports = {
+            // arquivo principal
+            entry: './main.js',
+            // para onde será enviado o código convertido para antes do ES6 como bundle.js
+            output: {
+                path: __dirname,
+                filename: 'bundle.js',
+            },
+            module: {
+                // como deve se comportar quando usuário importar arquivos JS
+                // qual loader utilizará (no nosso caso, Babel que manipula o conteúdo do arquivo)
+                // toda vez que importar um novo arquivo JS, executará o babel sozinho naquele arquivo.
+                // dessa forma não precisaremos do Babel executando em segundo plano
+                rules: [
+                    {
+                        // regex entre // e \ para escapar o . e $ final da regex
+                        test: /\.js$/,
+                        // para o Babel não execute arquivos JS da pasta node_modules
+                        exclude: /node_modules/,
+                        // qual loader será usado
+                        use: {
+                            loader: 'babel-loader',
+                        }
+                    }
+                ]
+            }
+        }
+    Instale o BABEL loader
+        yarn add babel-loader -D
+    Altere os scripts em package. json:
+        "scripts": {
+            "dev": "webpack --mode=development -w"
+        }
+
+=================================================================================================
+
+IMPORT / EXPORT
+Quando importar funções dentro de um arquivo o import deverá ser entre {}
+    export function soma(a, b) {
+        return a + b;
+    }
+
+    export function sub(a, b) {
+        return a - b;
+    }
+
+Quando tiver apenas uma função em um arquivo não deverá ser entre {} e a função deverá conter default
+    export default function multiplica(a, b) {
+        return a * b;
+    }
+
+O import para as funções acima será assim:
+    import { soma, sub } from './funcoes';
+    Caso queira renomear a soma (que não tem default na função) deverá ser assim:
+    Caso soma tenha um export default, podemos importar assim:
+    import soma, { sub } from './funcoes';
+    import { soma as somaFunction, sub } from './funcoes';
+    import multiplica from './multiplica';
+    O nome multiplica não precisa ser igual ao da função no arquivo importado
+    Podemos importar também todas as funções do arquivo com *
+    import * as funcoes from './funcoes';
+    console.log(funcoes.soma(1, 2));
+
+=================================================================================================
+
+WEBPACK DEV SERVER
+    Atualiza o navegador sem precisar dar refresh na página, apenas salvando o arquivo
+    Crie duas pastas na raiz do projeto:
+        Arquivos que não precisam ser monitorados pelo webpack
+            public
+        Arquivos monitorados pelo webpack
+            src
+    Coloque o index.html dentro de public e delete bundle.js pois será criado um novo
+    Crie um arquivo main.js dentro de src
+    Precisamos alterar o arquivo webpack.config.js:
+        entry: './src/main.js',
+        path: __dirname + '/public',
+        
+        Com as alterações o novo arquivo ficará assim:
+            module.exports = {
+                // arquivo principal
+                entry: './src/main.js',
+                // para onde será enviado o código convertido para antes do ES6 como bundle.js
+                output: {
+                    path: __dirname + '/public',
+                    filename: 'bundle.js',
+                },
+                module: {
+                    // como deve se comportar quando usuário importar arquivos JS
+                    // qual loader utilizará (no nosso caso, Babel que manipula o conteúdo do arquivo)
+                    // toda vez que importar um novo arquivo JS, executará o babel sozinho naquele arquivo.
+                    // dessa forma não precisaremos do Babel executando em segundo plano
+                    rules: [
+                        {
+                            // regex entre // e \ para escapar o . e $ final da regex
+                            test: /\.js$/,
+                            // para o Babel não execute arquivos JS da pasta node_modules
+                            exclude: /node_modules/,
+                            // qual loader será usado
+                            use: {
+                                loader: 'babel-loader',
+                            }
+                        }
+                    ]
+                }
+            }
+
+    Instale a dependência:
+        yarn add webpack-dev-server -D
+        Precisamos alterar o arquivo webpack.config.js entre filename e module:
+            devServer: {
+                contentBase: __dirname + '/public'
+            },
+        
+        Com as alterações o novo arquivo ficará assim:
+        
+        module.exports = {
+            // arquivo principal
+            entry: './src/main.js',
+            // para onde será enviado o código convertido para antes do ES6 como bundle.js
+            output: {
+                path: __dirname + '/public',
+                filename: 'bundle.js',
+            },
+            devServer: {
+                contentBase: __dirname + '/public'
+            },
+            module: {
+                // como deve se comportar quando usuário importar arquivos JS
+                // qual loader utilizará (no nosso caso, Babel que manipula o conteúdo do arquivo)
+                // toda vez que importar um novo arquivo JS, executará o babel sozinho naquele arquivo.
+                // dessa forma não precisaremos do Babel executando em segundo plano
+                rules: [
+                    {
+                        // regex entre // e \ para escapar o . e $ final da regex
+                        test: /\.js$/,
+                        // para o Babel não execute arquivos JS da pasta node_modules
+                        exclude: /node_modules/,
+                        // qual loader será usado
+                        use: {
+                            loader: 'babel-loader',
+                        }
+                    }
+                ]
+            }
+        }
+
+    Altere o script em package.json:
+        "scripts": {
+            "dev": "webpack-dev-server --mode=development"
+        }
+
+    ARQUIVO BUNDLE.JS
+    Apesar de não termos o arquivo bundle.js mais, o webpack embute ele em suas configurações.
+
+    Execute o script:
+        yarn dev
+            Será informado que o projeto está sendo executado em localhost:8080
+                Project is running at http://localhost:8080/
+
+    COLOCANDO EM PRODUÇÃO
+        Para colocarmos em produção devemos criar um script "build" em package.json:
+            "scripts": {
+                "dev": "webpack-dev-server --mode=development",
+                "build": "webpack --mode=production"
+            }
+
+
+
+
+
+
+
+
+
+=================================================================================================
