@@ -3,7 +3,7 @@ module.exports = {
     entry: [
         '@babel/polyfill',  // funcionalidades do Babel
         // './src/main.js' // arquivo principal
-        './exercicios/exercicio10.js'
+        './exercicios/exercicio11.js'
     ],
     // para onde será enviado o código convertido para antes do ES6 como bundle.js
     output: {
