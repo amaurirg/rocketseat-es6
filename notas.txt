@@ -103,6 +103,9 @@ console.log(sum);
 
 
 // FILTER
+
+const arr = [1, 3, 4, 5, 8, 9];
+
 // filtrará somente os números pares
 const filter = arr.filter(function(item) {
     return item % 2 === 0;
