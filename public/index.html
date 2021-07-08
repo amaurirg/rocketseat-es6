@@ -4,10 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
+
+        li {
+            clear: both;
+            margin-top: 20px;
+        }
+
+        img {
+            width: 80px;
+            float: left;
+            margin-right: 20px;
+        }
+
+        strong {
+            font-size:  20px;
+        }
+
+        p {
+            margin: 5px 0;
+        }
+    </style>
 </head>
 <body>
-    <button id="novotodo">Adicionar</button>
+    <form action="#" id="repo-form">
+        <input type="text" name="repository" />
+        <button type="submit">Adicionar</button>
+    </form>
+
+    <ul id="repo-list">
+        <!-- <li>
+            <img src="https://avatars2.githubusercontent.com/u/11185971?v=4" alt="">
+            <strong>Amauri</strong>
+            <p>Curso ES6 - Rocketseat</p>
+            <a href="https://github.com/amaurirg/rocketseat-es6">Acesse o repositório</a>
+        </li>
+        <li>
+            <img src="https://avatars2.githubusercontent.com/u/11185971?v=4" alt="">
+            <strong>Amauri</strong>
+            <p>Curso ES6 - Rocketseat</p>
+            <a href="https://github.com/amaurirg/rocketseat-es6">Acesse o repositório</a>
+        </li> -->
+    </ul>
+
     <script src="./bundle.js"></script>
-    <!-- <script src="./main.js"></script> -->
 </body>
 </html>

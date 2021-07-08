@@ -12,7 +12,7 @@ Babel
     Converter o código para que o navegador entenda
     Para trabalhar com linha de comando
         yarn add @babel/cli
-    Instale PRESET
+    Instale PRESET-ENV para converter o que os navegadores não entendem ainda (ES6, ES7...)
         yarn add @babel/preset-env
     Instale CORE
         yarn add @babel/core
@@ -24,7 +24,7 @@ Babel
             "@babel/preset-env": "^7.9.5"
         },
         "scripts": {
-            "dev": "babel ./main.js -0 ./bundle.js -w"
+            "dev": "babel ./main.js -o ./bundle.js -w"
         }
         }
         O -w serve para atualizar automaticamente o bundle.js de acordo com o código do projeto
@@ -135,6 +135,10 @@ console.log(find);
 
 // REST
 // Arquivo rest.js
+
+
+// FOREACH
+// percorre todo o array e não faz alterações como o map()
 
 
 =================================================================================================
